@@ -1,0 +1,11 @@
+16/02/2023 20:35:45: Funcion utilizada: ingresar, Datos ingresados: ['repelente aerosol', '1', '474.4']
+16/02/2023 20:35:45: Funcion utilizada: camposdel, Funcion Ejecutada
+16/02/2023 20:38:12: Funcion utilizada: ingresar, Datos ingresados: ['salchichas ', '3', '504.68']
+16/02/2023 20:38:12: Funcion utilizada: camposdel, Funcion Ejecutada
+16/02/2023 20:43:33: Funcion utilizada: ingresar, Datos ingresados: ['hamburguesas', '2', '928.47']
+16/02/2023 20:43:33: Funcion utilizada: camposdel, Funcion Ejecutada
+16/02/2023 20:52:18: Funcion utilizada: ingresar, Datos ingresados: ['conserva atun', '2', '279.57']
+16/02/2023 20:52:18: Funcion utilizada: camposdel, Funcion Ejecutada
+16/02/2023 20:55:37: Funcion utilizada: consultar, Funcion Ejecutada
+16/02/2023 20:55:58: Funcion utilizada: ingresar, Datos ingresados: ['conserva atun', '2', '279.57']
+16/02/2023 20:55:58: Funcion utilizada: camposdel, Funcion Ejecutada

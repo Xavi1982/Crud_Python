@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vista &mdash; documentación de TP Final: Control de Stock - 1.0.2</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            TP Final: Control de Stock
+          </a>
+              <div class="version">
+                1.0.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../decorador.html">decorador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estadisticas.html">estadisticas module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelo.html">modelo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../observador.html">observador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista.html">vista module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TP Final: Control de Stock</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">vista</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para vista</h1><div class="highlight"><pre>
+<span></span>
+<span class="c1"># TRABAJO PRACTICO FINAL NIVEL INTERMEDIO, DIPLOMATURA DE PYTHON</span>
+<span class="c1"># REALIZADO POR PAMELA MORSENTTI Y FRANCISCO PRADO, CURASADA #999188625</span>
+
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">StringVar</span>
+<span class="kn">from</span> <span class="nn">modelo</span> <span class="kn">import</span> <span class="n">Modelo</span>
+<span class="kn">from</span> <span class="nn">cls.vista_app</span> <span class="kn">import</span> <span class="n">VistaApp</span>
+<span class="kn">from</span> <span class="nn">cls.estilos.estilo</span> <span class="kn">import</span> <span class="n">estilos</span>
+
+<span class="c1"># CLASE VISTAVENTANA CREA LA VENTANA DE TKINTER,</span>
+<span class="c1"># USANDO LOS OBJETOS DE LA CLASE VISTAAPP PARA LOS WIDGETS Y</span>
+<span class="c1"># LOS OBJETOS DE MODELO PARA LA FUNCIONALIDAD</span>
+
+<div class="viewcode-block" id="VistaVentana"><a class="viewcode-back" href="../vista.html#vista.VistaVentana">[documentos]</a><span class="k">class</span> <span class="nc">VistaVentana</span><span class="p">():</span>
+    <span class="c1"># CONSTRUCTOR DE LA CLASE</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clase VistaVentana.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raiz</span><span class="p">,</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método constructor de la Clase VistaVentana.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            :raiz: Ventana raíz de la aplicación</span>
+<span class="sd">                    (Interfaz gráfica del usuario).</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            :Nos retorna la interfáz gráfica del usuario.</span>
+<span class="sd">            </span>
+<span class="sd">            &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="o">=</span><span class="n">raiz</span>
+        
+        <span class="c1"># VARIABLES DE TKINTER</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prod</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cant</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+        
+        <span class="c1"># LISTA CREADA PARA PODER SETEAR LOS ENTRIES EN UN STRING VACíO (&quot;&quot;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">campos</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span>
+                       <span class="bp">self</span><span class="o">.</span><span class="n">cant</span><span class="p">,</span>
+                       <span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">]</span>
+        
+        <span class="c1"># VARIABLE DE TKINTER PARA FUNCIONALIDAD DE RADIOBUTTON</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opcion</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+        
+        <span class="c1"># OBJETO DE CLASE MODELO EJECUTA LAS FUNCIONES DECLARADAS EN MODELO</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Modelo</span><span class="p">()</span>
+        
+        <span class="c1"># OBJETOS DE CLASE VISTAAPP CREAN LOS WIDGETS PARA LA VENTANA</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">=</span> <span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj4</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj5</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj6</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj7</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj8</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj9</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj10</span><span class="o">=</span><span class="n">VistaApp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">)</span>
+        
+        <span class="c1"># LISTA CREADA PARA DEVOLVER LOS VALORES CON LA FUNCIóN SELECCION A LOS ENTRIES</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">obj5</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">obj6</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">obj7</span><span class="p">]</span>
+        
+        <span class="c1"># OBJETO CORRESPONDIENTE AL LISTBOX</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">lista</span><span class="p">()</span>
+        
+        <span class="c1"># OBJETO CORRESPONDIENTE AL TREEVIEW</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">.</span><span class="n">tablap</span><span class="p">()</span>
+        
+        <span class="c1"># OBJETOS CORRESPONDIENTES A LOS LABELS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj8</span><span class="o">.</span><span class="n">etiqueta</span><span class="p">(</span><span class="s1">&#39;Producto&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj9</span><span class="o">.</span><span class="n">etiqueta</span><span class="p">(</span><span class="s1">&#39;Cantidad&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj10</span><span class="o">.</span><span class="n">etiqueta</span><span class="p">(</span><span class="s1">&#39;Precio&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span> 
+        
+        <span class="c1"># OBJETOS CORRESPONDIENTES A LOS ENTRIES</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj5</span><span class="o">.</span><span class="n">caja</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj6</span><span class="o">.</span><span class="n">caja</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cant</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj7</span><span class="o">.</span><span class="n">caja</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        
+        <span class="c1"># OBJETO CORRESPONDIENTE AL MENú</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj4</span><span class="o">.</span><span class="n">menu</span><span class="p">()</span>
+        
+        <span class="c1"># OBJETOS CORRESPONDIENTES A LOS BOTONES</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Ingreso&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">ingresar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span>
+                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">cant</span><span class="p">,</span>
+                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">,</span>
+                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">.</span><span class="n">tabla</span><span class="p">,</span>
+                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">campos</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Consulta&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">consultar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">.</span><span class="n">tabla</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Eliminar&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">borrar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">.</span><span class="n">tabla</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Modificar&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">modificar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span> 
+                                                                               <span class="bp">self</span><span class="o">.</span><span class="n">cant</span><span class="p">,</span> 
+                                                                               <span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">,</span> 
+                                                                               <span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">.</span><span class="n">tabla</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Devolver&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">devolver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj3</span><span class="o">.</span><span class="n">tabla</span><span class="p">,</span>
+                                                                              <span class="bp">self</span><span class="o">.</span><span class="n">lista</span><span class="p">,</span>
+                                                                              <span class="bp">self</span><span class="o">.</span><span class="n">campos</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Stock&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">seleccionlist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">listab</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Lista&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">obtprod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">listab</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Limpiar&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">camposdel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">campos</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">boton</span><span class="p">(</span><span class="s1">&#39;Salir&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;nsew&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        
+        <span class="c1"># OBJETO CORRESPONDIENTE A LABEL CON INDICACIONES DE AYUDA</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">etiqueta1</span><span class="p">(</span><span class="s2">&quot;BOTONES:&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> INGRESO: Alta de elementos&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> CONSULTA: Consultar base de datos&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> ELIMINAR: Borra elemento seleccionado&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> MODIFICACIÓN: Ingresa datos devueltos&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> DEVOLVER: Rellena campos para modificarlos&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> STOCK: Muestra totales del producto seleccionado&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> LISTA: Rellena lista de productos&quot;</span><span class="o">+</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> LIMPIAR: Limpia campos de ingreso&quot;</span><span class="p">,</span>
+                    <span class="mi">32</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span> 
+
+        <span class="c1"># OBJETOS CORRESPONDIENTES A LOS RADIOBUTTONS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">radiob</span><span class="p">(</span><span class="s1">&#39;Estilo 1&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opcion</span><span class="p">,</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">estilos</span><span class="o">.</span><span class="n">estilo1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj8</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj9</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj10</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">etiq1</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">radiob</span><span class="p">(</span><span class="s1">&#39;Estilo 2&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opcion</span><span class="p">,</span> <span class="s1">&#39;02&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">estilos</span><span class="o">.</span><span class="n">estilo2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">,</span>
+                                                                                       <span class="bp">self</span><span class="o">.</span><span class="n">obj8</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                       <span class="bp">self</span><span class="o">.</span><span class="n">obj9</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                       <span class="bp">self</span><span class="o">.</span><span class="n">obj10</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                       <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">etiq1</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">radiob</span><span class="p">(</span><span class="s1">&#39;Estilo 3&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">opcion</span><span class="p">,</span> <span class="s1">&#39;03&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">estilos</span><span class="o">.</span><span class="n">estilo3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raiz</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj8</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj9</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj10</span><span class="o">.</span><span class="n">etiq</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">obj2</span><span class="o">.</span><span class="n">etiq1</span><span class="p">))</span></div>
+       
+    
+    
+
+    
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Morsentti Pamela Valeria y Prado Francisco Xavier.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

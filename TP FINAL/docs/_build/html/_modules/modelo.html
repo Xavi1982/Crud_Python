@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modelo &mdash; documentación de TP Final: Control de Stock - 1.0.2</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            TP Final: Control de Stock
+          </a>
+              <div class="version">
+                1.0.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../decorador.html">decorador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estadisticas.html">estadisticas module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelo.html">modelo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../observador.html">observador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista.html">vista module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TP Final: Control de Stock</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">modelo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para modelo</h1><div class="highlight"><pre>
+<span></span>
+<span class="c1"># TRABAJO PRACTICO FINAL NIVEL INTERMEDIO, DIPLOMATURA DE PYTHON</span>
+<span class="c1"># REALIZADO POR PAMELA MORSENTTI Y FRANCISCO PRADO, CURASADA #999188625</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">messagebox</span>
+<span class="kn">from</span> <span class="nn">cls.baseorm</span> <span class="kn">import</span> <span class="n">Registro</span> 
+<span class="kn">from</span> <span class="nn">cls.baseorm</span> <span class="kn">import</span> <span class="n">BasePeewee</span>
+<span class="kn">from</span> <span class="nn">cls.validar</span> <span class="kn">import</span> <span class="n">Validar</span>
+<span class="kn">from</span> <span class="nn">decorador</span> <span class="kn">import</span> <span class="n">decorador_registro</span>
+<span class="kn">from</span> <span class="nn">observador</span> <span class="kn">import</span> <span class="n">Subject</span>
+
+<div class="viewcode-block" id="Modelo"><a class="viewcode-back" href="../modelo.html#modelo.Modelo">[documentos]</a><span class="k">class</span> <span class="nc">Modelo</span><span class="p">(</span><span class="n">Subject</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clase Modelo.</span>
+<span class="sd">    Hereda de Subject.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#CONSTRUCTOR DE LA CLASE MODELO</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor de la Clase Modelo.</span>
+<span class="sd">        </span>
+<span class="sd">        objdb = Registro ( BasePeewee )</span>
+<span class="sd">        obja1 = Validar ()</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">objdb</span> <span class="o">=</span> <span class="n">Registro</span><span class="p">(</span><span class="n">BasePeewee</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">objval</span><span class="o">=</span><span class="n">Validar</span><span class="p">()</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A los dferentes métodos se les aplica un decorador, que realizará una acción </span>
+<span class="sd">    determinada conforme al método en cuestión.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># BORRA LOS CAMPOS DE LOS ENTRY  </span>
+    <span class="nd">@decorador_registro</span>  
+    <span class="k">def</span> <span class="nf">camposdel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">campos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método para borrar los campos de los Entry.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            :campos: datos seleccionados.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">campo</span> <span class="ow">in</span> <span class="n">campos</span><span class="p">:</span>
+            <span class="n">campo</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        
+          
+    <span class="c1"># INGRESA LOS REGISTROS A LA BASE DE DATOS Y AL TREEVIEW</span>
+   
+    <span class="nd">@decorador_registro</span>
+    <span class="k">def</span> <span class="nf">ingresar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prod</span><span class="p">,</span> <span class="n">cant</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">tabla</span><span class="p">,</span> <span class="n">campos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método Ingresar.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos permite dar ingreso a nuevos artículos en la base de datos.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            :prod: productos, del tipo cadena de texto.</span>
+<span class="sd">            :cant: cantidad, del tipo Integer, números reales.</span>
+<span class="sd">            :prec: precio, del tipo Integer, n´mero reales.</span>
+<span class="sd">            :tabla: </span>
+<span class="sd">            :campos(_Treeview): Objeto del Treeview.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_prod</span> <span class="o">=</span> <span class="n">prod</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_cant</span> <span class="o">=</span> <span class="n">cant</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_prec</span> <span class="o">=</span> <span class="n">prec</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> 
+        
+        <span class="n">reg</span><span class="o">=</span><span class="n">Registro</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">objval</span><span class="o">.</span><span class="n">validar_producto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_prod</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">objval</span><span class="o">.</span><span class="n">validar_cantidad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_cant</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">objval</span><span class="o">.</span><span class="n">validar_precio</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_prec</span><span class="p">)</span>
+            
+            <span class="n">reg</span><span class="o">.</span><span class="n">prod</span><span class="o">=</span><span class="n">prod</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="n">reg</span><span class="o">.</span><span class="n">cant</span><span class="o">=</span><span class="n">cant</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">reg</span><span class="o">.</span><span class="n">prec</span><span class="o">=</span><span class="n">prec</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">reg</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">actualtabla</span><span class="p">(</span><span class="n">tabla</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">obtdicc</span><span class="p">()</span>        
+            <span class="bp">self</span><span class="o">.</span><span class="n">camposdel</span><span class="p">(</span><span class="n">campos</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notificar</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actualtabla</span><span class="p">(</span><span class="n">tabla</span><span class="p">)),</span> <span class="n">reg</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">cant</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;Ingreso&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;Datos ingresados exitosamente&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;Datos ingresados incorrectos&#39;</span><span class="p">)</span>
+        
+        
+            
+    <span class="c1"># ACTUALIZA LO MOSTRADO EN EL TREE VIEW DESDE LA BASE DE DATOS</span>
+<div class="viewcode-block" id="Modelo.actualtabla"><a class="viewcode-back" href="../modelo.html#modelo.Modelo.actualtabla">[documentos]</a>    <span class="k">def</span> <span class="nf">actualtabla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método de actualización del Treeview.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos permite actualizar los datos que se muestran en el Treeview</span>
+<span class="sd">        tomando los registros desde la base de datos.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            :tree(_Treeview): Objeto del Treeview.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registros</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">registros</span><span class="p">:</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Registro</span><span class="o">.</span><span class="n">select</span><span class="p">():</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">cant</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">prec</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">i</span></div>
+    
+        
+    <span class="c1"># BORRA REGISTRO SELECCIONADO EN EL TREEVIEW DE LA BASE DE DATOS</span>
+    
+    <span class="nd">@decorador_registro</span>
+    <span class="k">def</span> <span class="nf">borrar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tabla</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método borrar.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos permite borrar el registro seleccionado de la base de datos.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            :tabla(_Treeview): Objeto del Treeview.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>    
+        <span class="n">item</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">borra</span><span class="o">=</span><span class="n">Registro</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Registro</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+        <span class="n">borra</span><span class="o">.</span><span class="n">delete_instance</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualtabla</span><span class="p">(</span><span class="n">tabla</span><span class="p">)</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="s1">&#39;Borrado&#39;</span><span class="p">,</span> <span class="s1">&#39;Se borró exitosamente&#39;</span><span class="p">)</span>
+
+    <span class="c1"># MUESTRA EN EL TREEVIEW LO EXISTENTE EN LA BASE DE DATOS</span>
+    <span class="nd">@decorador_registro</span>
+    <span class="k">def</span> <span class="nf">consultar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tabla</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método consultar.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos deuelve al Treeview los datos existentes en la base de datos.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            :tabla(_Treeview): Objeto del Treeview.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualtabla</span><span class="p">(</span><span class="n">tabla</span><span class="p">)</span>
+
+    <span class="c1"># INSERTA EN LOS ENTRY LOS VALORES SELECCIONADOS DESDE EL TREEVIEW</span>
+    <span class="nd">@decorador_registro</span>    
+    <span class="k">def</span> <span class="nf">devolver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tabla</span><span class="p">,</span> <span class="n">lista</span><span class="p">,</span> <span class="n">campos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método devolver.</span>
+<span class="sd">        </span>
+<span class="sd">        Retorna los datos seleccionados en el Treeview a los Entry,</span>
+<span class="sd">        para su posterior modificación o actualización.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            :tabla(_Treeview): Objeto del Treeview.</span>
+<span class="sd">            :lista: lista de elementos.</span>
+<span class="sd">            :campos(_Treeview): Objeto del Treeview.</span>
+<span class="sd">        </span>
+<span class="sd">        En caso de producirse un error al no seleccionar elementos</span>
+<span class="sd">        desde el Treeview, se decuelve un mensaje de error mediante un</span>
+<span class="sd">        messagebox.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">val</span><span class="p">)[</span><span class="s1">&#39;values&#39;</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)):</span>
+               <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">campos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+               
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;Por favor, debe realizar una selección&#39;</span><span class="p">)</span>
+
+    <span class="c1"># MODIFICA LOS VALORES EN LA BASE DE DATOS DESDE LOS ENTRY        </span>
+    <span class="nd">@decorador_registro</span>
+    <span class="k">def</span> <span class="nf">modificar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prod</span><span class="p">,</span> <span class="n">cant</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">tabla</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método modificar.</span>
+<span class="sd">        </span>
+<span class="sd">        Permite realizar la modificación de los datos existntes en la </span>
+<span class="sd">        base de datos.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            :prod: productos, del tipo cadena de texto.</span>
+<span class="sd">            :cant: cantidad, del tipo Integer, números reales.</span>
+<span class="sd">            :prec: precio, del tipo Integer, números reales.</span>
+<span class="sd">            :tabla(_Treeview): Objeto del Treeview.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">tabla</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">actualiza</span><span class="o">=</span><span class="n">Registro</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">prod</span><span class="o">=</span><span class="n">prod</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+                                  <span class="n">cant</span><span class="o">=</span><span class="n">cant</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+                                  <span class="n">prec</span><span class="o">=</span><span class="n">prec</span><span class="o">.</span><span class="n">get</span><span class="p">())</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Registro</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+        <span class="n">actualiza</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actualtabla</span><span class="p">(</span><span class="n">tabla</span><span class="p">)</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;Modificar&#39;</span><span class="p">,</span> <span class="s1">&#39;Se actualizó registro&#39;</span><span class="p">)</span>
+
+
+    <span class="c1"># OBTIENE LOS REGISTROS DE LA BASE DE DATOS EN FORMATO DICCIONARIO</span>
+<div class="viewcode-block" id="Modelo.obtdicc"><a class="viewcode-back" href="../modelo.html#modelo.Modelo.obtdicc">[documentos]</a>    <span class="k">def</span> <span class="nf">obtdicc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método Obtención diccionario.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos permite obtener los registros de la base de datos </span>
+<span class="sd">        en formato de diccionario.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">Registro</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">dicts</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
+                <span class="n">resultado</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">resultado</span></div>
+
+    <span class="c1"># SE INSERTA EN LISTBOX LOS DATOS DE LA COLUMNA PROD DE LA BASE DE DATOS</span>
+    <span class="nd">@decorador_registro</span>
+    <span class="k">def</span> <span class="nf">obtprod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">listab</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método Obtención productos.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos permite insertar en el Listbox los datos obrantes en la Columna</span>
+<span class="sd">        &quot;Producto&quot; en la base de datos.</span>
+<span class="sd">        Relizamos una conslta y una &quot;extracción&quot; de datos.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">listab</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">)</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">Registro</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+        <span class="n">lista</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
+            <span class="n">lista</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">fila</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+            <span class="n">lista</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+            <span class="n">listab</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        
+        
+    <span class="c1"># SE SELECCIONA UN PRODUCTO EN LISTBOX PARA BUSCAR Y SE RECIBE LOS DATOS DE STOCK (CANTIDAD Y VALOR) </span>
+    <span class="nd">@decorador_registro</span>        
+    <span class="k">def</span> <span class="nf">seleccionlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">listab</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método Selección Lista.</span>
+<span class="sd">        </span>
+<span class="sd">        Se selecciona un producto desde el Listbox y esto nos permite buscar</span>
+<span class="sd">        y recibir los datos referentes a la cantidad y el valor del producto</span>
+<span class="sd">        determinado conforme a su stock en la base de datos.</span>
+
+<span class="sd">        En caso de producirse un error al no seleccionar elementos</span>
+<span class="sd">        desde el Listbox, se decuelve un mensaje de error mediante un</span>
+<span class="sd">        messagebox.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">compra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtdicc</span><span class="p">()</span>
+        <span class="n">busqueda</span> <span class="o">=</span> <span class="mi">0</span>
+    
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">listab</span><span class="o">.</span><span class="n">curselection</span><span class="p">():</span>
+            <span class="n">tupla</span> <span class="o">=</span><span class="n">listab</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">busqueda</span> <span class="o">=</span> <span class="n">tupla</span>
+            
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">compra</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">busqueda</span> <span class="o">==</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;prod&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">():</span>
+                    <span class="n">consulta</span> <span class="o">=</span> <span class="n">x</span>
+                    <span class="n">sub</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consulta</span><span class="p">)</span>
+               
+        <span class="k">if</span> <span class="n">busqueda</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;Por favor, ingrese una busqueda válida&#39;</span><span class="p">)</span>
+                
+        <span class="n">cantidadlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">preciolist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">subtotallist</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sub</span><span class="p">:</span>
+            <span class="n">cantidadlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;cant&#39;</span><span class="p">])</span>
+            <span class="n">preciolist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;prec&#39;</span><span class="p">])</span>
+            <span class="n">subtotallist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;cant&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;prec&#39;</span><span class="p">])</span>
+
+        <span class="n">cantidad</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cantidadlist</span><span class="p">)</span>
+        
+        <span class="n">subtotal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">subtotallist</span><span class="p">)</span>
+
+        <span class="n">info</span> <span class="o">=</span> <span class="s2">&quot;El Stock de &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">busqueda</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; es de &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cantidad</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; y su valor es de &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">subtotal</span><span class="p">)</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;STOCK&#39;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>      
+
+    <span class="c1"># MUESTRA POR MEDIO DE UN MESSAGEBOX EL TOTAL DEL VALOR DE TODOS LOS PRODUCTOS DESDE EL DICCIONARIO</span>
+    <span class="nd">@decorador_registro</span>           
+    <span class="k">def</span> <span class="nf">totalinfor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método Información Total.</span>
+<span class="sd">        </span>
+<span class="sd">        Muestra por medio de un Messagebox el total del valos de todos los productos</span>
+<span class="sd">        obtenidos desde el diccionario creado.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">totallist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">compra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtdicc</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">compra</span><span class="p">:</span>
+            <span class="n">totallist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="s1">&#39;cant&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">j</span><span class="p">[</span><span class="s1">&#39;prec&#39;</span><span class="p">])</span>
+            
+        <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">totallist</span><span class="p">)</span>
+        <span class="n">totalinfo</span> <span class="o">=</span> <span class="s2">&quot;El Total de Stock es de &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;STOCK&#39;</span><span class="p">,</span> <span class="n">totalinfo</span><span class="p">)</span>
+
+    <span class="c1"># ABRE EL ARCHIVO PDF DE AYUDA INCLUIDO</span>
+    <span class="nd">@decorador_registro</span>
+    <span class="k">def</span> <span class="nf">ayuda</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Método ayuda.</span>
+<span class="sd">        </span>
+<span class="sd">        Nos de acceso al archivo en formato *pdf donde se encuentra</span>
+<span class="sd">        el Manual de Ayuda sobre el uso de la aplicación.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ruta</span> <span class="o">=</span> <span class="s1">&#39;Aplicación.pdf&#39;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
+        
+        
+<div class="viewcode-block" id="Modelo.datos_stats"><a class="viewcode-back" href="../modelo.html#modelo.Modelo.datos_stats">[documentos]</a>    <span class="k">def</span> <span class="nf">datos_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtdicc</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
+
+
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Morsentti Pamela Valeria y Prado Francisco Xavier.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

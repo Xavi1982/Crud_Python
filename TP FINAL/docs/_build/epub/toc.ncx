@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<ncx version="2005-1" xmlns="http://www.daisy.org/z3986/2005/ncx/">
+  <head>
+    <meta name="dtb:uid" content="unknown"/>
+    <meta name="dtb:depth" content="3"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    <text>TP Final: Control de Stock</text>
+  </docTitle>
+  <navMap>    
+    <navPoint id="navPoint1" playOrder="1">
+      <navLabel>
+        <text>Welcome to TP_Final’s documentation!</text>
+      </navLabel>
+      <content src="index.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint2" playOrder="2">
+      <navLabel>
+        <text>controlador module</text>
+      </navLabel>
+      <content src="controlador.xhtml" />  
+      <navPoint id="navPoint3" playOrder="2">
+        <navLabel>
+          <text>controlador module</text>
+        </navLabel>
+        <content src="controlador.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint4" playOrder="3">
+        <navLabel>
+          <text>Controlador</text>
+        </navLabel>
+        <content src="controlador.xhtml#controlador.Controlador" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint5" playOrder="4">
+      <navLabel>
+        <text>decorador module</text>
+      </navLabel>
+      <content src="decorador.xhtml" />  
+      <navPoint id="navPoint6" playOrder="4">
+        <navLabel>
+          <text>decorador module</text>
+        </navLabel>
+        <content src="decorador.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint7" playOrder="5">
+        <navLabel>
+          <text>decorador_registro()</text>
+        </navLabel>
+        <content src="decorador.xhtml#decorador.decorador_registro" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint8" playOrder="6">
+      <navLabel>
+        <text>estadisticas module</text>
+      </navLabel>
+      <content src="estadisticas.xhtml" />  
+      <navPoint id="navPoint9" playOrder="6">
+        <navLabel>
+          <text>estadisticas module</text>
+        </navLabel>
+        <content src="estadisticas.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint10" playOrder="7">
+        <navLabel>
+          <text>Estadisticas</text>
+        </navLabel>
+        <content src="estadisticas.xhtml#estadisticas.Estadisticas" />  
+        <navPoint id="navPoint11" playOrder="7">
+          <navLabel>
+            <text>Estadisticas</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas" />  
+        </navPoint>
+        <navPoint id="navPoint12" playOrder="8">
+          <navLabel>
+            <text>Estadisticas.datos</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.datos" />  
+        </navPoint>
+        <navPoint id="navPoint13" playOrder="9">
+          <navLabel>
+            <text>Estadisticas.df</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.df" />  
+        </navPoint>
+        <navPoint id="navPoint14" playOrder="10">
+          <navLabel>
+            <text>Estadisticas.df1</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.df1" />  
+        </navPoint>
+        <navPoint id="navPoint15" playOrder="11">
+          <navLabel>
+            <text>Estadisticas.mas_caro()</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.mas_caro" />  
+        </navPoint>
+        <navPoint id="navPoint16" playOrder="12">
+          <navLabel>
+            <text>Estadisticas.mayor_cant()</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.mayor_cant" />  
+        </navPoint>
+        <navPoint id="navPoint17" playOrder="13">
+          <navLabel>
+            <text>Estadisticas.mayor_gasto()</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.mayor_gasto" />  
+        </navPoint>
+        <navPoint id="navPoint18" playOrder="14">
+          <navLabel>
+            <text>Estadisticas.obj</text>
+          </navLabel>
+          <content src="estadisticas.xhtml#estadisticas.Estadisticas.obj" />  
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint19" playOrder="15">
+      <navLabel>
+        <text>modelo module</text>
+      </navLabel>
+      <content src="modelo.xhtml" />  
+      <navPoint id="navPoint20" playOrder="15">
+        <navLabel>
+          <text>modelo module</text>
+        </navLabel>
+        <content src="modelo.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint21" playOrder="16">
+        <navLabel>
+          <text>Modelo</text>
+        </navLabel>
+        <content src="modelo.xhtml#modelo.Modelo" />  
+        <navPoint id="navPoint22" playOrder="16">
+          <navLabel>
+            <text>Modelo</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo" />  
+        </navPoint>
+        <navPoint id="navPoint23" playOrder="17">
+          <navLabel>
+            <text>Modelo.actualtabla()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.actualtabla" />  
+        </navPoint>
+        <navPoint id="navPoint24" playOrder="18">
+          <navLabel>
+            <text>Modelo.ayuda()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.ayuda" />  
+        </navPoint>
+        <navPoint id="navPoint25" playOrder="19">
+          <navLabel>
+            <text>Modelo.borrar()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.borrar" />  
+        </navPoint>
+        <navPoint id="navPoint26" playOrder="20">
+          <navLabel>
+            <text>Modelo.camposdel()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.camposdel" />  
+        </navPoint>
+        <navPoint id="navPoint27" playOrder="21">
+          <navLabel>
+            <text>Modelo.consultar()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.consultar" />  
+        </navPoint>
+        <navPoint id="navPoint28" playOrder="22">
+          <navLabel>
+            <text>Modelo.datos_stats()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.datos_stats" />  
+        </navPoint>
+        <navPoint id="navPoint29" playOrder="23">
+          <navLabel>
+            <text>Modelo.devolver()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.devolver" />  
+        </navPoint>
+        <navPoint id="navPoint30" playOrder="24">
+          <navLabel>
+            <text>Modelo.ingresar()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.ingresar" />  
+        </navPoint>
+        <navPoint id="navPoint31" playOrder="25">
+          <navLabel>
+            <text>Modelo.modificar()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.modificar" />  
+        </navPoint>
+        <navPoint id="navPoint32" playOrder="26">
+          <navLabel>
+            <text>Modelo.obtdicc()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.obtdicc" />  
+        </navPoint>
+        <navPoint id="navPoint33" playOrder="27">
+          <navLabel>
+            <text>Modelo.obtprod()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.obtprod" />  
+        </navPoint>
+        <navPoint id="navPoint34" playOrder="28">
+          <navLabel>
+            <text>Modelo.seleccionlist()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.seleccionlist" />  
+        </navPoint>
+        <navPoint id="navPoint35" playOrder="29">
+          <navLabel>
+            <text>Modelo.totalinfor()</text>
+          </navLabel>
+          <content src="modelo.xhtml#modelo.Modelo.totalinfor" />  
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint36" playOrder="30">
+      <navLabel>
+        <text>observador module</text>
+      </navLabel>
+      <content src="observador.xhtml" />  
+      <navPoint id="navPoint37" playOrder="30">
+        <navLabel>
+          <text>observador module</text>
+        </navLabel>
+        <content src="observador.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint38" playOrder="31">
+        <navLabel>
+          <text>ConcreteObserver_A</text>
+        </navLabel>
+        <content src="observador.xhtml#observador.ConcreteObserver_A" />  
+        <navPoint id="navPoint39" playOrder="31">
+          <navLabel>
+            <text>ConcreteObserver_A</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.ConcreteObserver_A" />  
+        </navPoint>
+        <navPoint id="navPoint40" playOrder="32">
+          <navLabel>
+            <text>ConcreteObserver_A.contador()</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.ConcreteObserver_A.contador" />  
+        </navPoint>
+        <navPoint id="navPoint41" playOrder="33">
+          <navLabel>
+            <text>ConcreteObserver_A.update()</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.ConcreteObserver_A.update" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint42" playOrder="34">
+        <navLabel>
+          <text>Observador</text>
+        </navLabel>
+        <content src="observador.xhtml#observador.Observador" />  
+        <navPoint id="navPoint43" playOrder="34">
+          <navLabel>
+            <text>Observador</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Observador" />  
+        </navPoint>
+        <navPoint id="navPoint44" playOrder="35">
+          <navLabel>
+            <text>Observador.update()</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Observador.update" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint45" playOrder="36">
+        <navLabel>
+          <text>Subject</text>
+        </navLabel>
+        <content src="observador.xhtml#observador.Subject" />  
+        <navPoint id="navPoint46" playOrder="36">
+          <navLabel>
+            <text>Subject</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Subject" />  
+        </navPoint>
+        <navPoint id="navPoint47" playOrder="37">
+          <navLabel>
+            <text>Subject.agregar()</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Subject.agregar" />  
+        </navPoint>
+        <navPoint id="navPoint48" playOrder="38">
+          <navLabel>
+            <text>Subject.notificar()</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Subject.notificar" />  
+        </navPoint>
+        <navPoint id="navPoint49" playOrder="39">
+          <navLabel>
+            <text>Subject.observadores</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Subject.observadores" />  
+        </navPoint>
+        <navPoint id="navPoint50" playOrder="40">
+          <navLabel>
+            <text>Subject.quitar()</text>
+          </navLabel>
+          <content src="observador.xhtml#observador.Subject.quitar" />  
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint51" playOrder="41">
+      <navLabel>
+        <text>vista module</text>
+      </navLabel>
+      <content src="vista.xhtml" />  
+      <navPoint id="navPoint52" playOrder="41">
+        <navLabel>
+          <text>vista module</text>
+        </navLabel>
+        <content src="vista.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint53" playOrder="42">
+        <navLabel>
+          <text>VistaVentana</text>
+        </navLabel>
+        <content src="vista.xhtml#vista.VistaVentana" />  
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>
